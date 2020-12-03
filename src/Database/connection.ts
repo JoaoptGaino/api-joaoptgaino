@@ -3,9 +3,9 @@ import knex from 'knex';
 const db = knex({
     client:'mysql',
     connection:{
-        host:'pizzariabanco.mysql.dbaas.com.br',
+        host:process.env.DB_HOST,
         user:'pizzariabanco',
-        password:'Joaopedro-321',
+        password:process.env.DB_PASS,
         database:'pizzariabanco',
         port:3306
     },
