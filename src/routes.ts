@@ -13,7 +13,7 @@ routes.get('/', (req: Request, res: Response) => {
 
 routes.get('/posts', postsController.index);
 routes.post('/posts', postsController.create);
-routes.get('/post', postsController.show);
+routes.get('/post/:id', postsController.show);
 routes.post('/mailer', emailController.enviar);
 
 export default routes;

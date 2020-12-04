@@ -3,17 +3,16 @@ import db from '../Database/connection';
 
 export default class PostsController {
     async show(req: Request, res: Response) {
-        const filter = req.query;
-        const id = filter.id as string;
-
-        if (!id) {
-            return res.status(400).json({
-                error: "Faltou o id"
-            });
+        const id = req.params.id as string;
+        try {
+            const point = await db('postagens').select('*').where('id', id);
+            return res.status(200).json(point);
+        } catch (err) {
+            console.log(err);
+            return res.status(500)
+                .json({ message: "Internal error" })
         }
-        const point = await db('points').select('*').where('id', '=', id);
 
-        return res.status(200).json(point);
 
     }
     async index(req: Request, res: Response) {
