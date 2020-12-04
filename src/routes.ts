@@ -5,14 +5,15 @@ import EmailController from './Controllers/EmailController';
 const routes = express.Router();
 const postsController = new PostsController;
 const emailController = new EmailController;
-routes.get('/',(req:Request,res:Response)=>{
+routes.get('/', (req: Request, res: Response) => {
     res.json({
-        message:"E aí"
+        message: "E aí"
     });
 });
 
-routes.get('/posts',postsController.index);
-routes.post('/posts',postsController.create);
-routes.post('/mailer',emailController.enviar);
+routes.get('/posts', postsController.index);
+routes.post('/posts', postsController.create);
+routes.get('/post', postsController.show);
+routes.post('/mailer', emailController.enviar);
 
 export default routes;
